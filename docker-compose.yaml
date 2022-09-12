@@ -27,7 +27,7 @@ services:
       - ./dashboards:/etc/grafana/provisioning/dashboards
       - ./data/grafana:/var/lib/grafana
     networks: [monitoring]
-    user: "1000:1000"
+    #user: "1000:1000"
 
   jaeger:
     image: jaegertracing/all-in-one:latest
@@ -43,7 +43,7 @@ services:
       - BADGER_DIRECTORY_KEY=/badger/key
       - BADGER_DIRECTORY_VALUE=/badger/data
       - BADGER_SPAN_STORE_TTL=168h0m0s
-    user: "1000:1000"
+    #user: "1000:1000"
 
   loki:
     image: grafana/loki:latest
@@ -55,7 +55,7 @@ services:
       - /var/log:/var/log:ro
       - ./data/loki:/loki
     networks: [monitoring]
-    user: "1000:1000"
+    #user: "1000:1000"
 
   opentelemetry-collector:
     image: otel/opentelemetry-collector:latest
@@ -75,7 +75,7 @@ services:
       - ./prometheus.yaml:/etc/prometheus/prometheus.yaml
       - ./data/prometheus:/prometheus
     networks: [monitoring]
-    user: "1000:1000"
+    #user: "1000:1000"
     mem_limit: 512m
 
   vector:
